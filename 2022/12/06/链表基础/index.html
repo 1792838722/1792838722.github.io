@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>链表基础 | Byte&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;stdio.h&gt;#include&lt;windows.h&gt;struct node&amp;#123;    int">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表基础">
+<meta property="og:url" content="http://example.com/2022/12/06/%E9%93%BE%E8%A1%A8%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Byte&#39;s Blog">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;stdio.h&gt;#include&lt;windows.h&gt;struct node&amp;#123;    int">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-06T03:17:45.000Z">
+<meta property="article:modified_time" content="2022-12-06T03:27:17.405Z">
+<meta property="article:author" content="Byte">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Byte's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Byte&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">以钢铁的洪流实现我们的雄心</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-链表基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/12/06/%E9%93%BE%E8%A1%A8%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2022-12-06T03:17:45.000Z" itemprop="datePublished">2022-12-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      链表基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;windows.h&gt;</span><br><span class="line">struct node&#123;</span><br><span class="line">    int data;</span><br><span class="line">    //数据域</span><br><span class="line">    struct node *nxt;</span><br><span class="line">    //指针域</span><br><span class="line">&#125;;</span><br><span class="line">int n,x,need_del;</span><br><span class="line">struct node *head=NULL;</span><br><span class="line">void add_list_tail(struct node **head,struct node *new_one)</span><br><span class="line">&#123;</span><br><span class="line">    new_one-&gt;data=x;</span><br><span class="line">    new_one-&gt;nxt=*head;</span><br><span class="line">    *head=new_one;</span><br><span class="line">    return;</span><br><span class="line">&#125;//在 list 尾部插入</span><br><span class="line">void add_list_head(struct node **head,struct node *new_one)</span><br><span class="line">&#123;</span><br><span class="line">    struct node *real_head=*head;</span><br><span class="line">    new_one-&gt;data=x;</span><br><span class="line">    if(real_head)</span><br><span class="line">    &#123;</span><br><span class="line">        while(real_head-&gt;nxt)</span><br><span class="line">            real_head=real_head-&gt;nxt;</span><br><span class="line">        real_head-&gt;nxt=new_one;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">        *head=new_one;</span><br><span class="line">    new_one-&gt;nxt=NULL;//记得 if 里面也要将 nxt 标记为 NULL</span><br><span class="line">    return;</span><br><span class="line">&#125;//在 list 头部插入</span><br><span class="line">void traversal()</span><br><span class="line">&#123;</span><br><span class="line">    for(struct node *p=head;p;p=p-&gt;nxt)</span><br><span class="line">        printf(&quot;%d\n&quot;,p-&gt;data);</span><br><span class="line">    return;</span><br><span class="line">&#125;//从尾部遍历 list</span><br><span class="line">int del(int x)</span><br><span class="line">&#123;</span><br><span class="line">    struct node *cur,*pre;</span><br><span class="line">    for(cur=head,pre=head;cur&amp;&amp;cur-&gt;data!=x;cur=cur-&gt;nxt)</span><br><span class="line">        pre=cur;</span><br><span class="line">    if(!cur)</span><br><span class="line">        return -1;//-1 代表没找到</span><br><span class="line">    if(pre==cur)</span><br><span class="line">        head=cur-&gt;nxt;// 防止删除尾部节点后 traversal 时因 head 未更改导致 RE</span><br><span class="line">    pre-&gt;nxt=cur-&gt;nxt;</span><br><span class="line">    free(cur);</span><br><span class="line">    return 0;//0 代表成功删除了节点并正常退出</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;n);</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        struct node *new_one=(struct node*)malloc(sizeof(struct node));</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;x);</span><br><span class="line">        //add_list_head(&amp;head,new_one);</span><br><span class="line">        add_list_tail(&amp;head,new_one);</span><br><span class="line">        //list 以第一个 nxt 指向空指针的结构体节点为头部</span><br><span class="line">    &#125;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;need_del);</span><br><span class="line">    del(need_del);</span><br><span class="line">    traversal();</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/12/06/%E9%93%BE%E8%A1%A8%E5%9F%BA%E7%A1%80/" data-id="clbcejeqq00045scc0jwe4dzh" data-title="链表基础" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/11/03/NOIP-2020-%E9%80%80%E5%BD%B9%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">NOIP 2020 退役记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 20px;">游记</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/12/06/%E9%93%BE%E8%A1%A8%E5%9F%BA%E7%A1%80/">链表基础</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/03/NOIP-2020-%E9%80%80%E5%BD%B9%E8%AE%B0/">NOIP 2020 退役记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/03/CSP-S-2020-%E7%88%86%E9%9B%B6%E8%AE%B0/">CSP-S 2020 爆零记</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Byte<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
