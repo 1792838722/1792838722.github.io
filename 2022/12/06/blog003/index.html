@@ -232,8 +232,9 @@
             <p>模板留作参考</p>
 <span id="more"></span>
 
-<pre><code class="c">#include&lt;stdio.h&gt;
-#include&lt;windows.h&gt;
+<p>C++:</p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
 struct node&#123;
     int data;
     //数据域
@@ -301,6 +302,41 @@ int main()
     return 0;
 &#125;
 </code></pre>
+<p>Java:</p>
+<pre><code class="java">import java.util.Scanner;
+
+public class LinkedList &#123;
+    public static void main(String[] args) &#123;
+        Scanner scan = new Scanner(System.in);
+        int num = scan.nextInt();
+        Node node = new Node();
+        for (int i = 1; i &lt;= num; i++) &#123;
+            node = new Node(node, i);
+        &#125;
+        node.traversal(node);
+        scan.close();
+    &#125;
+&#125;
+
+class Node &#123;
+    private Node nxt;
+    private int data;
+
+    public Node() &#123;&#125;
+
+    public Node(Node head, int data) &#123;
+        this.nxt = head;
+        this.data = data;
+    &#125;
+
+    public void traversal(Node node) &#123;
+        while (node.nxt != null) &#123;
+            System.out.println(node.data);
+            node = node.nxt;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 
         </div>
 
@@ -326,7 +362,7 @@ int main()
 <nav class="article-nav">
   
     <a href="/2023/04/03/clg0vwpjx0000t8cc1znrfpiy/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-caption">prossimo</div>
       <div class="article-nav-title">
         
           友元关系
@@ -336,7 +372,7 @@ int main()
   
   
     <a href="/2022/10/31/blog000/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-caption">precedente</div>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -344,7 +380,7 @@ int main()
 
 
     <section class="share">
-        <div class="share-title">分享</div>
+        <div class="share-title">share</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=链表基础 - Byte&url=https%3A%2F%2F1792838722.github.io%2F2022%2F12%2F06%2Fblog003%2F">
             <ion-icon name="logo-twitter"></ion-icon>
