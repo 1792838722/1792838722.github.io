@@ -301,37 +301,110 @@ int main()
 &#125;
 </code></pre>
 <p>Java:</p>
-<pre><code class="java">import java.util.Scanner;
+<pre><code class="java">package daily;
 
-public class LinkedList &#123;
-    public static void main(String[] args) &#123;
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        Node node = new Node();
-        for (int i = 1; i &lt;= num; i++) &#123;
-            node = new Node(node, i);
+public class LinkedList&lt;ElemType&gt; &#123;
+    private Node&lt;ElemType&gt; head; // 头结点
+
+    public LinkedList() &#123;
+        head = new Node&lt;ElemType&gt;(); // 头结点不存储数据
+    &#125;
+
+    public int length() &#123; // 返回链表长度
+        int count = 0;
+        for (Node&lt;ElemType&gt; p = head.nxt; p != null; p = p.nxt) &#123;
+            count ++;
         &#125;
-        node.traversal(node);
-        scan.close();
+        return count;
+    &#125;
+
+    public boolean empty() &#123; // 判断链表是否为空
+        return head.nxt == null;
+    &#125;
+
+    public void clear() &#123; // 清空链表
+        while (!empty()) &#123;
+            delete(1);
+        &#125;
+    &#125;
+
+    public void traverse() &#123; // 遍历链表
+        for (Node&lt;ElemType&gt; p = head.nxt; p != null; p = p.nxt) &#123;
+            System.out.println(p.data);
+        &#125;
+    &#125;
+
+    private Node&lt;ElemType&gt; getElemPtr (int pos, int limLeft, int limRight) &#123; // 获取指定位置的结点指针
+        if (pos &lt; limLeft || pos &gt; limRight) &#123;
+            throw new IllegalArgumentException(&quot;Position is out of range!&quot;); // 抛出异常
+        &#125; else &#123;
+            int count = 0;
+            for (Node&lt;ElemType&gt; p = head; p != null; p = p.nxt) &#123;
+                if (count == pos) &#123;
+                    return p;
+                &#125; else &#123;
+                    count ++;
+                &#125;
+            &#125;
+        &#125;
+        return null;
+    &#125;
+    
+    public ElemType getElem(int pos) &#123; // 获取指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; p = getElemPtr(pos, 1, length());
+            return p.data;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常
+            e.printStackTrace();
+        &#125;
+        return null;
+    &#125;
+
+    public boolean setElem(int pos, ElemType val) &#123; // 设置指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; p = getElemPtr(pos, 1, length());
+            p.data = val;
+            return true;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常 
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    public boolean delete(int pos) &#123; // 删除指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; back = getElemPtr(pos - 1, 1, length()); // 被删除结点的前驱结点
+            Node&lt;ElemType&gt; pst = back.nxt;  // 被删除结点
+            back.nxt = back.nxt.nxt; // 删除结点
+            pst = null; // 释放内存
+            return true;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    public boolean insert(int pos, ElemType val) &#123; // 在指定位置插入元素
+        try &#123;
+            Node&lt;ElemType&gt; back = getElemPtr(pos, 0, length()); // 被插入结点的前驱结点
+            back.nxt = new Node&lt;ElemType&gt;(back.nxt, val); // 插入结点
+            return true; 
+        &#125; catch (IllegalArgumentException e) &#123;  // 捕获异常
+            e.printStackTrace(); 
+            return false;
+        &#125;
     &#125;
 &#125;
 
-class Node &#123;
-    private Node nxt;
-    private int data;
+class Node&lt;ElemType&gt; &#123; // 链表结点类
+    public Node&lt;ElemType&gt; nxt = null;
+    public ElemType data;
 
     public Node() &#123;&#125;
 
-    public Node(Node head, int data) &#123;
-        this.nxt = head;
+    public Node(Node&lt;ElemType&gt; next, ElemType data) &#123;
+        this.nxt = next;
         this.data = data;
-    &#125;
-
-    public void traversal(Node node) &#123;
-        while (node.nxt != null) &#123;
-            System.out.println(node.data);
-            node = node.nxt;
-        &#125;
     &#125;
 &#125;
 </code></pre>
