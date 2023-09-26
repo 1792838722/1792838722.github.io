@@ -151,6 +151,135 @@
   
     
       <article
+id="post-栈与队列"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2023/09/26/blog004/">栈与队列</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        <p>模板留作参考：</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+
+template &lt;typename ElemType&gt;
+class Node &#123;
+public:
+    ElemType data;
+    Node* next;
+    Node(ElemType data, Node* next) &#123;
+        this-&gt;data = data;
+        this-&gt;next = next;
+    &#125;
+&#125;; // Node 结点类
+
+template &lt;typename ElemType&gt;
+class Stack &#123;
+private:
+    Node&lt;ElemType&gt;* top; // 栈顶指针
+
+public:
+    Stack() &#123;
+        top = nullptr;
+    &#125; // 初始栈顶为空
+
+    ~Stack() &#123;
+        Node&lt;ElemType&gt;* p;
+        while (top != nullptr) &#123;
+            pop();
+        &#125;
+    &#125; // 清除栈
+
+    bool empty() &#123;
+        return top == nullptr;
+    &#125; // 判断栈是否为空
+
+    int size() &#123;
+        int count = 0;
+        for (Node&lt;ElemType&gt; *p = top; p != nullptr; p = p-&gt;next) &#123;
+            count++;
+        &#125;
+        return count;
+    &#125; // 返回栈中元素个数
+
+    void push(ElemType data) &#123;
+        Node&lt;ElemType&gt;* p = new Node&lt;ElemType&gt;(data, top); // 新结点的 next 指向原来的栈顶
+        top = p; // 新结点成为栈顶
+    &#125; // 入栈
+
+    bool pop() &#123;
+        if (empty()) &#123;
+            std::cout &lt;&lt; &quot;Stack is empty!&quot; &lt;&lt; std::endl;
+            return false;
+        &#125;
+        Node&lt;ElemType&gt;* p = top;
+        top = top-&gt;next;
+        delete p;
+        return true;
+    &#125; // 出栈
+    
+    ElemType getTop() &#123;
+        if (empty()) &#123;
+            std::cout &lt;&lt; &quot;Stack is empty!&quot; &lt;&lt; std::endl;
+            exit(1);
+        &#125;
+        ElemType data = top-&gt;data;
+        return data;
+    &#125; // 获取栈顶元素
+&#125;; // Stack 栈类，无头结点链表，链表头为栈顶
+
+int main() &#123;
+    Stack&lt;int&gt; *s = new Stack&lt;int&gt;();
+    for (int i = 1; i &lt;= 10; i++) &#123;
+        s-&gt;push(i);
+    &#125;
+    std::cout &lt;&lt; &quot;size: &quot; &lt;&lt; s-&gt;size() &lt;&lt; std::endl;
+    while (!s-&gt;empty()) &#123;
+        std::cout &lt;&lt; s-&gt;getTop() &lt;&lt; &quot; &quot;;
+        s-&gt;pop();
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2023-09-26T06:20:29.000Z" itemprop="datePublished">2023-09-26</time>
+</div>
+    
+    
+        <div class="article-tag">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+        </div>
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
 id="post-友元关系"
 class="article article-type-post"
 >
@@ -388,6 +517,10 @@ class="article article-type-post"
       <ul>
         
           <li>
+            <a href="/2023/09/26/blog004/">栈与队列</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/03/blog004/">友元关系</a>
           </li>
         
@@ -401,10 +534,6 @@ class="article article-type-post"
         
           <li>
             <a href="/2020/12/02/blog002/">NOIP 2020 退役记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/07/blog001/">CSP-S 2020 爆零记</a>
           </li>
         
       </ul>
