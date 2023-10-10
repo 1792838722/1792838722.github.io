@@ -222,7 +222,7 @@
 
             
             <div class="article-busuanzi">
-                <span id="busuanzi_value_page_pv">N</span> 人看过
+                <span id="busuanzi_value_page_pv">N</span> views
             </div>
             
 
@@ -248,7 +248,12 @@
 <p>模式串：AB<strong>A</strong>BC（失配转移）</p>
 <p>此时我们就能得到 next[3] &#x3D; 2.</p>
 <p>下面给出 KMP 算法的失配跳转法则：</p>
-<p>在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录 1 个位置 j, j &lt;&#x3D; i 且满足 str[i] &#x3D; str[j]， 并且在j !&#x3D; 0 时应该满足 str[0 ~ j] 与 str[(i - j) ~ i] 按位相等。</p>
+<p>在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录 1 个位置 j, j &lt;&#x3D; i 且满足 str[i] &#x3D; str[j]， 并且在 j !&#x3D; 0 时应该满足 str[0 ~ j] 与 str[(i - j) ~ i] 按位相等。</p>
+<p>为了更好理解以上内容，下面引入一下字符串前后缀的概念</p>
+<p>前缀：从 S 串首开始到某个位置结束的一个子串（不含空串）</p>
+<p>后缀：从某个位置开始到 S 串尾结束的一个子串（不含空串）</p>
+<p>真前缀：除了 S 串本身的前缀子串</p>
+<p>真后缀：除了 S 串本身的后缀子串</p>
 
         </div>
 
@@ -263,7 +268,7 @@
     
   <div class="article-copyright hairline">
     <p>
-      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+      本記事は  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">「表示 - 非営利 - 改変禁止 4.0 国際 (CC BY-NC-ND 4.0)」</a> を採用。
     </p>
   </div>
   
@@ -275,7 +280,7 @@
   
   
     <a href="/2023/09/26/blog004/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-caption">precedente</div>
       <div class="article-nav-title">栈与队列</div>
     </a>
   
@@ -283,7 +288,7 @@
 
 
     <section class="share">
-        <div class="share-title">分享</div>
+        <div class="share-title">share</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=KMP算法 - Byte&url=https%3A%2F%2F1792838722.github.io%2F2023%2F10%2F10%2Fblog004%2F">
             <ion-icon name="logo-twitter"></ion-icon>
