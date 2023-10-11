@@ -103,7 +103,11 @@
 
     </script>
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
 
@@ -183,7 +187,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnlvfqzd0005osccgmsndo3q" class="article article-type-post" itemscope
+    <article id="post-clnlvt77f000414cc0g1z26pm" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -231,9 +235,8 @@
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <p>模板留作参考</p>
 <span id="more"></span>
-
 <p>链式栈：</p>
-<pre><code class="c++">#include &lt;iostream&gt;
+<pre><code class="lang-c++">#include &lt;iostream&gt;
 
 template &lt;typename ElemType&gt;
 class Node &#123;
@@ -290,7 +293,7 @@ public:
         delete p;
         return true;
     &#125; // 出栈
-    
+
     ElemType getTop() &#123;
         if (empty()) &#123;
             std::cout &lt;&lt; &quot;Stack is empty!&quot; &lt;&lt; std::endl;
@@ -316,7 +319,7 @@ int main() &#123;
 &#125;
 </code></pre>
 <p>链队列：</p>
-<pre><code class="cpp">#include &lt;iostream&gt;
+<pre><code class="lang-cpp">#include &lt;iostream&gt;
 
 template &lt;typename ElemType&gt;
 class Node &#123;
@@ -400,10 +403,10 @@ int main() &#123;
     &#125;
     delete q;
     return 0;
-&#125; 
+&#125;
 </code></pre>
 <p>循环队列：</p>
-<pre><code class="cpp">#include &lt;iostream&gt;
+<pre><code class="lang-cpp">#include &lt;iostream&gt;
 
 template &lt;typename ElemType&gt;
 class SqQueue &#123;
@@ -420,7 +423,7 @@ public:
         data = new ElemType[maxSize];
         front = rear = 0;
     &#125; // 构造函数
-    
+
     ~SqQueue() &#123;
         delete []data;
     &#125; // 析构函数

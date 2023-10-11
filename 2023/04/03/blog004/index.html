@@ -103,7 +103,11 @@
 
     </script>
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
 
 <body>
 
@@ -183,7 +187,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnlvfqzc0003oscc4vi63qe5" class="article article-type-post" itemscope
+    <article id="post-clnlvt77l000f14ccd76rdogd" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -231,10 +235,9 @@
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h2 id="友元关系"><a href="#友元关系" class="headerlink" title="友元关系"></a>友元关系</h2><p>C++友元关系主要分为<strong>三类</strong>：</p>
 <span id="more"></span>
-
-<h3 id="1-全局函数作友元"><a href="#1-全局函数作友元" class="headerlink" title="1.全局函数作友元"></a>1.全局函数作友元</h3><p>​	默认情况下，类的 private 成员只能在类的内部来访问，在类的外部访问 private 成员是非法的。而如果想在类外部的全局函数里访问 private 成员的话，就可以定义该函数与类的友元关系来访问类的 private 成员。</p>
-<p>​	形象来说，类相当于一栋房子。public 成员储存在客厅，外来的客人可以任意访问；而 private 成员储存在卧室，外人莫入，只能自己访问。而如果想让某个朋友也能进入卧室访问 private 成员的话，那么就可以专门给他开一个小门，允许他进入卧室。这个小门就可以称为友元关系。</p>
-<pre><code class="cpp">class Point1&#123;
+<h3 id="1-全局函数作友元"><a href="#1-全局函数作友元" class="headerlink" title="1.全局函数作友元"></a>1.全局函数作友元</h3><p>​    默认情况下，类的 private 成员只能在类的内部来访问，在类的外部访问 private 成员是非法的。而如果想在类外部的全局函数里访问 private 成员的话，就可以定义该函数与类的友元关系来访问类的 private 成员。</p>
+<p>​    形象来说，类相当于一栋房子。public 成员储存在客厅，外来的客人可以任意访问；而 private 成员储存在卧室，外人莫入，只能自己访问。而如果想让某个朋友也能进入卧室访问 private 成员的话，那么就可以专门给他开一个小门，允许他进入卧室。这个小门就可以称为友元关系。</p>
+<pre><code class="lang-cpp">class Point1&#123;
     private:
         int sitex,sitey;
     public:
@@ -251,7 +254,7 @@ void distance(const Point1 *a,const Point1 *b)
     std::cout &lt;&lt; dx &lt;&lt; &quot; &quot; &lt;&lt; dy &lt;&lt; std::endl;
 &#125;// 友元关系使得该函数能访问 private 成员 sitex 和 sitey
 </code></pre>
-<pre><code class="c++">#include&lt;iostream&gt;
+<pre><code class="lang-c++">#include&lt;iostream&gt;
 #include&lt;windows.h&gt;
 class Point2;
 class Point1&#123;
