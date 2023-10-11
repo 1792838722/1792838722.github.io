@@ -248,7 +248,7 @@
 <p>​    模式串：A<strong>B</strong>ABC（失配转移）</p>
 <p>​    此时我们就能得到 next[3] = 1.（文本串指针指向的字符，与模式串指针指向的<strong>下一个</strong>字符，来进行匹配）</p>
 <p>​    下面给出 KMP 算法的失配跳转法则：</p>
-<p>​    在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录 1 个位置 j, j &lt;= i 且满足 str[0 ~ j] 与 str[(i - j) ~ i] 按位相等。若不存在以上的 j &gt;= 0，则 <strong>next[i] = -1</strong>.</p>
+<p>​    在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录 1 个位置 j, j &lt;= i 且满足 <strong>str[0 ~ j] 与 str[(i - j) ~ i] 按位相等</strong>。若<strong>不存在</strong>以上的 j &gt;= 0，则 <strong>next[i] = -1</strong>.</p>
 <p>​    为了更好理解以上内容，下面引入一下字符串前后缀的概念</p>
 <p>​    前缀：从 S 串首开始到某个位置结束的一个子串</p>
 <p>​    后缀：从某个位置开始到 S 串尾结束的一个子串</p>
