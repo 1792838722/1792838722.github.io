@@ -8,7 +8,7 @@
     
     <title>KMP算法 | Byte</title>
 
-    <meta name="description" content="&lt;h2 id=&#34;KMP-算法解析&#34;&gt;&lt;a href=&#34;#KMP-算法解析&#34; class=&#34;headerlink&#34; title=&#34;KMP 算法解析&#34;&gt;&lt;/a&gt;KMP 算法解析&lt;/h2&gt;">
+    <meta name="description" content="&lt;h2 id=&#34;kmp-算法解析&#34;&gt;KMP 算法解析&lt;/h2&gt;">
     <meta name="keywords" content="">
 
     
@@ -16,17 +16,17 @@
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "KMP算法 | Byte"  />
-    <meta property="og:description" content= "&lt;h2 id=&#34;KMP-算法解析&#34;&gt;&lt;a href=&#34;#KMP-算法解析&#34; class=&#34;headerlink&#34; title=&#34;KMP 算法解析&#34;&gt;&lt;/a&gt;KMP 算法解析&lt;/h2&gt;" />
+    <meta property="og:description" content= "&lt;h2 id=&#34;kmp-算法解析&#34;&gt;KMP 算法解析&lt;/h2&gt;" />
     <meta property="og:url" content="https://1792838722.github.io/2023/10/10/blog004/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="Byte" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="&lt;h2 id=&#34;KMP-算法解析&#34;&gt;&lt;a href=&#34;#KMP-算法解析&#34; class=&#34;headerlink&#34; title=&#34;KMP 算法解析&#34;&gt;&lt;/a&gt;KMP 算法解析&lt;/h2&gt;" />
+    <meta property="og:description" content="&lt;h2 id=&#34;kmp-算法解析&#34;&gt;KMP 算法解析&lt;/h2&gt;" />
     <meta name="twitter:title" content="KMP算法 | Byte"/>
-    <meta name="twitter:description" content="&lt;h2 id=&#34;KMP-算法解析&#34;&gt;&lt;a href=&#34;#KMP-算法解析&#34; class=&#34;headerlink&#34; title=&#34;KMP 算法解析&#34;&gt;&lt;/a&gt;KMP 算法解析&lt;/h2&gt;"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;kmp-算法解析&#34;&gt;KMP 算法解析&lt;/h2&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "&lt;h2 id=&#34;KMP-算法解析&#34;&gt;&lt;a href=&#34;#KMP-算法解析&#34; class=&#34;headerlink&#34; title=&#34;KMP 算法解析&#34;&gt;&lt;/a&gt;KMP 算法解析&lt;/h2&gt;",
+            "description": "&lt;h2 id=&#34;kmp-算法解析&#34;&gt;KMP 算法解析&lt;/h2&gt;",
             "author": { "@type": "Person", "name": "Byte" },
             "@type": "BlogPosting",
             "url": "https://1792838722.github.io/2023/10/10/blog004/index.html",
@@ -183,7 +183,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnjyk8tx0000qoccdyx43xqb" class="article article-type-post" itemscope
+    <article id="post-clnluxpaa000488cc7dprg0vt" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -229,172 +229,212 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h2 id="KMP-算法解析"><a href="#KMP-算法解析" class="headerlink" title="KMP 算法解析"></a>KMP 算法解析</h2><span id="more"></span>
-
-<h3 id="一-引入"><a href="#一-引入" class="headerlink" title="一. 引入"></a>一. 引入</h3><p>​	现在把需要相互比较的字符串分为<strong>文本串</strong>（被比较的字符串，通常较长）和<strong>模式串</strong>（需要比较的字符串，通常较短）。比较简单的算法实现就是通过暴力匹配，来一位一位的进行比较。当文本串中的某一位失配时，即将文本串回溯从头开始比较。最坏情况下，时间复杂度能达到 $\Theta（nm）$. KMP 算法则通过构造<strong>失配跳转数组</strong> next[]，实现模式串失配后跳转其匹配的<strong>唯一</strong>位置，来避免文本串的回溯，从而降低时间复杂度。</p>
-<h3 id="二-解析"><a href="#二-解析" class="headerlink" title="二.解析"></a>二.解析</h3><p>​	KMP 算法相较于暴力匹配算法，其中最大的优化在于构造了失配跳转数组 next[]. 这里定义一下失配跳转数组 next[] 的含义：<strong>next[i] &#x3D; j</strong> 相当于在 <strong>i 位置之后</strong>失配时跳转到 <strong>j 位置</strong>。而现在就是要知道怎么得到 next[]. 现有一示例:</p>
+            <h2 id="kmp-算法解析">KMP 算法解析</h2>
+<span id="more"></span>
+<h3 id="一.-引入">一. 引入</h3>
+<p>​
+现在把需要相互比较的字符串分为<strong>文本串</strong>（被比较的字符串，通常较长）和<strong>模式串</strong>（需要比较的字符串，通常较短）。比较简单的算法实现就是通过暴力匹配，来一位一位的进行比较。当文本串中的某一位失配时，即将文本串回溯从头开始比较。最坏情况下，时间复杂度能达到
+<span class="math inline">\(\Theta（nm）\)</span>. KMP
+算法则通过构造<strong>失配跳转数组</strong>
+next[]，实现模式串失配后跳转其匹配的<strong>唯一</strong>位置，来避免文本串的回溯，从而降低时间复杂度。</p>
+<h3 id="二.解析">二.解析</h3>
+<p>​ KMP 算法相较于暴力匹配算法，其中最大的优化在于构造了失配跳转数组
+next[]. 这里定义一下失配跳转数组 next[] 的含义：<strong>next[i] =
+j</strong> 相当于在 <strong>i 位置之后</strong>失配时跳转到 <strong>j
+位置</strong>。而现在就是要知道怎么得到 next[]. 现有一示例:</p>
 <pre><code>文本串：ABABABC
-模式串：ABABC
-</code></pre>
-<p>​	明显可以看出，模式串的第 4 位失配，需要回溯。暴力匹配的思路是将模式串回溯到第 0 位，再回溯文本串。实际上，可以看到，文本串第 0，1 位和模式串第 2，3 位是匹配的，因此完全可以把模式串向前挪动 2 位从文本串的第 3 位继续比较。</p>
+模式串：ABABC</code></pre>
+<p>​ 明显可以看出，模式串的第 4
+位失配，需要回溯。暴力匹配的思路是将模式串回溯到第 0
+位，再回溯文本串。实际上，可以看到，文本串第 0，1 位和模式串第 2，3
+位是匹配的，因此完全可以把模式串向前挪动 2 位从文本串的第 3
+位继续比较。</p>
 <pre><code>文本串：ABABABC
-模式串：  ABABC
-</code></pre>
-<p>​	这样移动了模式串，避免了我们不必要地回溯文本串，大大优化了时间复杂度。当然程序里面不是通过挪动模式串来完成上述步骤的，而是通过指针移动完成的。如上例：</p>
-<p>​	文本串：ABAB<strong>A</strong>BC</p>
-<p>​	模式串：ABA<strong>B</strong>C（下一位匹配将失配）</p>
-<p>​	文本串：ABAB<strong>A</strong>BC</p>
-<p>​	模式串：A<strong>B</strong>ABC（失配转移）</p>
-<p>​	此时我们就能得到 next[3] &#x3D; 1.（文本串指针指向的字符，与模式串指针指向的<strong>下一个</strong>字符，来进行匹配）</p>
-<p>​	下面给出 KMP 算法的失配跳转法则：</p>
-<p>​	在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录 1 个位置 j, j &lt;&#x3D; i 且满足 **str[0 ~ j] 与 str[(i - j) ~ i] 按位相等**。若**不存在**以上的 j &gt;&#x3D; 0，则 <strong>next[i] &#x3D; -1</strong>.</p>
-<p>​	为了更好理解以上内容，下面引入一下字符串前后缀的概念</p>
-<p>​	前缀：从 S 串首开始到某个位置结束的一个子串</p>
-<p>​	后缀：从某个位置开始到 S 串尾结束的一个子串</p>
-<p>​	真前缀：除了 S 串本身的前缀子串</p>
-<p>​	真后缀：除了 S 串本身的后缀子串</p>
-<p>​	用前后缀概念代换一下上面的法则，可以得到计算 next[] 的方法：</p>
-<p>​	在模式串 str 中，对于每一个位置 i，其失配跳转值 next[i] 应当是记录 1 个位置 j，j &lt;&#x3D; i 且满足，在<strong>以 i 为结尾</strong>的<strong>前缀子串</strong>中，满足<strong>最长</strong>的<strong>真前缀和真后缀相同</strong>的情况下的，<strong>真前缀最后一个字符</strong>的下标位置。若<strong>不存在</strong>满足条件的<strong>非空</strong>真前缀子串，则 <strong>next[i] &#x3D; -1</strong>.</p>
-<p>​	可能非常绕，还是先以上面模式串 ABABC 为例。</p>
-<p>​	按照以上规则计算如下：</p>
+模式串：  ABABC</code></pre>
+<p>​
+这样移动了模式串，避免了我们不必要地回溯文本串，大大优化了时间复杂度。当然程序里面不是通过挪动模式串来完成上述步骤的，而是通过指针移动完成的。如上例：</p>
+<p>​ 文本串：ABAB<strong>A</strong>BC</p>
+<p>​ 模式串：ABA<strong>B</strong>C（下一位匹配将失配）</p>
+<p>​ 文本串：ABAB<strong>A</strong>BC</p>
+<p>​ 模式串：A<strong>B</strong>ABC（失配转移）</p>
+<p>​ 此时我们就能得到 next[3] =
+1.（文本串指针指向的字符，与模式串指针指向的<strong>下一个</strong>字符，来进行匹配）</p>
+<p>​ 下面给出 KMP 算法的失配跳转法则：</p>
+<p>​ 在模式串 str 中，对于每一位 str[i]，其失配跳转值 next[i] 应当是记录
+1 个位置 j, j &lt;= i 且满足 <strong>str[0 ~ j] 与 str[(i - j) ~ i]
+按位相等</strong>。若<strong>不存在</strong>以上的 j &gt;= 0，则
+<strong>next[i] = -1</strong>.</p>
+<p>​ 为了更好理解以上内容，下面引入一下字符串前后缀的概念</p>
+<p>​ 前缀：从 S 串首开始到某个位置结束的一个子串</p>
+<p>​ 后缀：从某个位置开始到 S 串尾结束的一个子串</p>
+<p>​ 真前缀：除了 S 串本身的前缀子串</p>
+<p>​ 真后缀：除了 S 串本身的后缀子串</p>
+<p>​ 用前后缀概念代换一下上面的法则，可以得到计算 next[] 的方法：</p>
+<p>​ 在模式串 str 中，对于每一个位置 i，其失配跳转值 next[i] 应当是记录 1
+个位置 j，j &lt;= i 且满足，在<strong>以 i
+为结尾</strong>的<strong>前缀子串</strong>中，满足<strong>最长</strong>的<strong>真前缀和真后缀相同</strong>的情况下的，<strong>真前缀最后一个字符</strong>的下标位置。若<strong>不存在</strong>满足条件的<strong>非空</strong>真前缀子串，则
+<strong>next[i] = -1</strong>.</p>
+<p>​ 可能非常绕，还是先以上面模式串 ABABC 为例。</p>
+<p>​ 按照以上规则计算如下：</p>
 <table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 17%" />
+<col style="width: 29%" />
+<col style="width: 37%" />
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>前缀子串长度</th>
 <th>前缀子串</th>
 <th>最长真前后缀相等的长度</th>
 <th>真前缀最后一个字符的下标位置</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>1</td>
 <td>A</td>
 <td>0</td>
 <td>-1（不存在）</td>
 </tr>
-<tr>
+<tr class="even">
 <td>2</td>
 <td>AB</td>
 <td>0</td>
 <td>-1（不存在）</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>3</td>
 <td><strong>A</strong> B <strong>A</strong></td>
 <td>1</td>
 <td>0</td>
 </tr>
-<tr>
+<tr class="even">
 <td>4</td>
 <td><strong>AB</strong> <strong>AB</strong></td>
 <td>2</td>
 <td>1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>5</td>
 <td>ABABC</td>
 <td>0</td>
 <td>-1（不存在）</td>
 </tr>
-</tbody></table>
-<p>​	由上表，next[i] 也可以看作最长真前后缀相等的长度 - 1.</p>
-<h3 id="三-证明"><a href="#三-证明" class="headerlink" title="三.证明"></a>三.证明</h3><p>​	为什么上述规则是成立的？其实也很好证明。</p>
-<p>​	假设现有文本串 txt 和模式串 pat，目前已有 txt[x ~ (x + i)] &#x3D; pat[0 ~ i]（”&#x3D;” 这里为按位匹配），现 pat[i + 1] 与 txt[x + i + 1] 不匹配，若按以上规则求得 next[i] &#x3D; j（先令 j !&#x3D; -1）. 则有 pat[0 ~ j] &#x3D; pat[(i - j) ~ i]. 又因为 txt[(x + i - j) ~ (x + i)] &#x3D; pat[(i - j) ~ i]，则有 txt[(x + i - j) ~ (x + i)] &#x3D; pat[0 ~ j], 即 txt 文本串已匹配的末 j + 1 位与 pat 模式串的前 j + 1 位相匹配，可直接从 pat[j + 1] 开始匹配，得证。</p>
-<p>​	如果看着不直观，可以画个图试试证明的过程。</p>
-<h3 id="四-实现"><a href="#四-实现" class="headerlink" title="四.实现"></a>四.实现</h3><p>​	证明到上述计算 next[] 的方法合理后，当我们得到 next[] 之后，计算两串匹配就很简单。当出现不匹配的情况时，只需跳转当前位置的 next[] 中的值即可，直到匹配为止。若匹配则两串指针均自增。当然，如果 pat 的指针通过跳转 next[] 的值都到 -1 了，依旧没有匹配，说明前面已经匹配的文本串根本就没有利用价值，无法利用真前后缀相等来找捷径，应该把文本串指针自增一下重新匹配。</p>
-<p>​	那么字符串匹配的算法就很好写了：</p>
-<pre><code class="java">// next[] 已求出
-private static int KMP() &#123;
-       int patPtr = -1; // 开始匹配时，模式串指针为 -1，因为我们是匹配 pat[patPtr + 1] 与 txt[i]
-       for (int i = 0; i &lt; txtLen; i++) &#123; // 限制一下范围
-        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) &#123; 
-            patPtr = next[patPtr]; // 失配跳转
-        &#125;
-        if (pat.charAt(patPtr + 1) == txt.charAt(i)) &#123; // 匹配对了
-            patPtr++;
-        &#125;
-        if (patPtr == patLen - 1) &#123; // 所有的都匹配完了
-            return i - patLen + 1; // 返回第一次匹配的文本串首下标
-        &#125;
-     &#125;
-    return -1; // 根本没匹配到
-&#125;
-</code></pre>
-<p>​	而 next[] 的获取则可以通过前面的值推理。首先 next[0] &#x3D; -1 是显然的。步骤如下：</p>
-<p>​	1.查看第 next[i - 1]，设为 patPtr.</p>
-<p>​	2.判断 patPtr 是否为 -1，若为 -1，就直接与第 0 个字符比较。</p>
-<p>​	3.若不为 -1，将第 i - 1 个字符与第 patPtr 个字符比较。</p>
-<p>​	4.如果相同，next[i] &#x3D; patPtr + 1.</p>
-<p>​	5.如果不同，patPtr &#x3D; next[patPtr]，执行第 2 步。</p>
-<p>​	因此，代码如下：</p>
-<pre><code class="java">private static void getNext() &#123;
-       next[0] = -1; // 就 1 个字符，也找不到真前缀
-     int patPtr = -1;
-     for (int i = 1; i &lt; patLen; i++) &#123;
-        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) &#123;
-          patPtr = next[patPtr]; // 失配跳转
-        &#125;
-        if (pat.charAt(patPtr + 1) == pat.charAt(i)) &#123; // 匹配成功
-            patPtr++;
-        &#125;
-        next[i] = patPtr; // 判断情况完成，赋值
-      &#125;
-&#125;
-</code></pre>
-<p>​	上面就是 KMP 算法的核心代码了。下面给出完整代码。</p>
-<pre><code class="java">import java.util.Scanner;
-
-public class KMP &#123;
-    public static void main(String[] args) &#123;
-        Scanner in = new Scanner(System.in);
-        txt = in.next(); // 文本串
-        pat = in.next(); // 模式串
-        txtLen = txt.length();
-        patLen = pat.length();
-        next = new int[patLen];
-        getNext();
-        System.out.println(KMP());
-        in.close();
-    &#125;
-
-    private static void getNext() &#123;
-        next[0] = -1; // 就 1 个字符，也找不到真前缀
-        int patPtr = -1;
-        for (int i = 1; i &lt; patLen; i++) &#123;
-            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) &#123;
-                patPtr = next[patPtr]; // 失配跳转
-            &#125;
-            if (pat.charAt(patPtr + 1) == pat.charAt(i)) &#123; // 匹配成功
-                patPtr++;
-            &#125;
-            next[i] = patPtr; // 判断情况完成，赋值
-        &#125;
-    &#125;
-
-    // next[] 已求出
-    private static int KMP() &#123;
-        int patPtr = -1; // 开始匹配时，模式串指针为 -1,因为我们是匹配 pat[patPtr + 1] 与 txt[i]
-        for (int i = 0; i &lt; txtLen; i++) &#123; // 限制一下范围
-            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) &#123; 
-                patPtr = next[patPtr]; // 失配跳转
-            &#125;
-            if (pat.charAt(patPtr + 1) == txt.charAt(i)) &#123; // 匹配对了
-                patPtr++;
-            &#125;
-            if (patPtr == patLen - 1) &#123; // 所有的都匹配完了
-                return i - patLen + 1; // 返回第一次匹配的文本串首下标
-            &#125;
-        &#125;
-        return -1; // 根本没匹配到
-    &#125;
-
-    private static int[] next;
-    private static int patLen;
-    private static int txtLen;
-    private static String pat;
-    private static String txt;
-&#125;
-</code></pre>
+</tbody>
+</table>
+<p>​ 由上表，next[i] 也可以看作最长真前后缀相等的长度 - 1.</p>
+<h3 id="三.证明">三.证明</h3>
+<p>​ 为什么上述规则是成立的？其实也很好证明。</p>
+<p>​ 假设现有文本串 txt 和模式串 pat，目前已有 txt[x ~ (x + i)] = pat[0 ~
+i]（"=" 这里为按位匹配），现 pat[i + 1] 与 txt[x + i + 1]
+不匹配，若按以上规则求得 next[i] = j（先令 j != -1）. 则有 pat[0 ~ j] =
+pat[(i - j) ~ i]. 又因为 txt[(x + i - j) ~ (x + i)] = pat[(i - j) ~
+i]，则有 txt[(x + i - j) ~ (x + i)] = pat[0 ~ j], 即 txt
+文本串已匹配的末 j + 1 位与 pat 模式串的前 j + 1 位相匹配，可直接从
+pat[j + 1] 开始匹配，得证。</p>
+<p>​ 如果看着不直观，可以画个图试试证明的过程。</p>
+<h3 id="四.实现">四.实现</h3>
+<p>​ 证明到上述计算 next[] 的方法合理后，当我们得到 next[]
+之后，计算两串匹配就很简单。当出现不匹配的情况时，只需跳转当前位置的
+next[] 中的值即可，直到匹配为止。若匹配则两串指针均自增。当然，如果 pat
+的指针通过跳转 next[] 的值都到 -1
+了，依旧没有匹配，说明前面已经匹配的文本串根本就没有利用价值，无法利用真前后缀相等来找捷径，应该把文本串指针自增一下重新匹配。</p>
+<p>​ 那么字符串匹配的算法就很好写了：</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// next[] 已求出</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">KMP</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> patPtr <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 开始匹配时，模式串指针为 -1，因为我们是匹配 pat[patPtr + 1] 与 txt[i]</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> txtLen<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span> <span class="co">// 限制一下范围</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>patPtr <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">!=</span> txt<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            patPtr <span class="op">=</span> next<span class="op">[</span>patPtr<span class="op">];</span> <span class="co">// 失配跳转</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">==</span> txt<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> <span class="co">// 匹配对了</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            patPtr<span class="op">++;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>patPtr <span class="op">==</span> patLen <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 所有的都匹配完了</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> i <span class="op">-</span> patLen <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// 返回第一次匹配的文本串首下标</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 根本没匹配到</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<p>​ 而 next[] 的获取则可以通过前面的值推理。首先 next[0] = -1
+是显然的。步骤如下：</p>
+<p>​ 1.查看第 next[i - 1]，设为 patPtr.</p>
+<p>​ 2.判断 patPtr 是否为 -1，若为 -1，就直接与第 0 个字符比较。</p>
+<p>​ 3.若不为 -1，将第 i - 1 个字符与第 patPtr 个字符比较。</p>
+<p>​ 4.如果相同，next[i] = patPtr + 1.</p>
+<p>​ 5.如果不同，patPtr = next[patPtr]，执行第 2 步。</p>
+<p>​ 因此，代码如下：</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">getNext</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    next<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 就 1 个字符，也找不到真前缀</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> patPtr <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> patLen<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>patPtr <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">!=</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          patPtr <span class="op">=</span> next<span class="op">[</span>patPtr<span class="op">];</span> <span class="co">// 失配跳转</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">==</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> <span class="co">// 匹配成功</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            patPtr<span class="op">++;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        next<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> patPtr<span class="op">;</span> <span class="co">// 判断情况完成，赋值</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<p>​ 上面就是 KMP 算法的核心代码了。下面给出完整代码。</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">java</span><span class="op">.</span><span class="im">util</span><span class="op">.</span><span class="im">Scanner</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> KMP <span class="op">&#123;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Scanner</span> in <span class="op">=</span> <span class="kw">new</span> <span class="bu">Scanner</span><span class="op">(</span><span class="bu">System</span><span class="op">.</span><span class="fu">in</span><span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        txt <span class="op">=</span> in<span class="op">.</span><span class="fu">next</span><span class="op">();</span> <span class="co">// 文本串</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        pat <span class="op">=</span> in<span class="op">.</span><span class="fu">next</span><span class="op">();</span> <span class="co">// 模式串</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        txtLen <span class="op">=</span> txt<span class="op">.</span><span class="fu">length</span><span class="op">();</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        patLen <span class="op">=</span> pat<span class="op">.</span><span class="fu">length</span><span class="op">();</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        next <span class="op">=</span> <span class="kw">new</span> <span class="dt">int</span><span class="op">[</span>patLen<span class="op">];</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">getNext</span><span class="op">();</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span><span class="fu">KMP</span><span class="op">());</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        in<span class="op">.</span><span class="fu">close</span><span class="op">();</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">getNext</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        next<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 就 1 个字符，也找不到真前缀</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> patPtr <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> patLen<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>patPtr <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">!=</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                patPtr <span class="op">=</span> next<span class="op">[</span>patPtr<span class="op">];</span> <span class="co">// 失配跳转</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">==</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> <span class="co">// 匹配成功</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                patPtr<span class="op">++;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>            next<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> patPtr<span class="op">;</span> <span class="co">// 判断情况完成，赋值</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="co">// next[] 已求出</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">KMP</span><span class="op">()</span> <span class="op">&#123;</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> patPtr <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 开始匹配时，模式串指针为 -1,因为我们是匹配 pat[patPtr + 1] 与 txt[i]</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> txtLen<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span> <span class="co">// 限制一下范围</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>patPtr <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span> <span class="op">&amp;&amp;</span> pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">!=</span> txt<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> </span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>                patPtr <span class="op">=</span> next<span class="op">[</span>patPtr<span class="op">];</span> <span class="co">// 失配跳转</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>pat<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>patPtr <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">==</span> txt<span class="op">.</span><span class="fu">charAt</span><span class="op">(</span>i<span class="op">))</span> <span class="op">&#123;</span> <span class="co">// 匹配对了</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>                patPtr<span class="op">++;</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>patPtr <span class="op">==</span> patLen <span class="op">-</span> <span class="dv">1</span><span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 所有的都匹配完了</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> i <span class="op">-</span> patLen <span class="op">+</span> <span class="dv">1</span><span class="op">;</span> <span class="co">// 返回第一次匹配的文本串首下标</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> <span class="co">// 根本没匹配到</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span><span class="op">[]</span> next<span class="op">;</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> patLen<span class="op">;</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="dt">int</span> txtLen<span class="op">;</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="bu">String</span> pat<span class="op">;</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">static</span> <span class="bu">String</span> txt<span class="op">;</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
 
         </div>
 
