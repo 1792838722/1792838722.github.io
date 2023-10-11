@@ -8,8 +8,7 @@
     
     <title>友元关系 | Byte</title>
 
-    <meta name="description" content="&lt;h2 id=&#34;友元关系&#34;&gt;友元关系&lt;/h2&gt;
-&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;">
+    <meta name="description" content="&lt;h2 id=&#34;友元关系&#34;&gt;&lt;a href=&#34;#友元关系&#34; class=&#34;headerlink&#34; title=&#34;友元关系&#34;&gt;&lt;/a&gt;友元关系&lt;/h2&gt;&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;">
     <meta name="keywords" content="">
 
     
@@ -17,21 +16,17 @@
     <meta property="og:locale" content="en" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content= "友元关系 | Byte"  />
-    <meta property="og:description" content= "&lt;h2 id=&#34;友元关系&#34;&gt;友元关系&lt;/h2&gt;
-&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;" />
+    <meta property="og:description" content= "&lt;h2 id=&#34;友元关系&#34;&gt;&lt;a href=&#34;#友元关系&#34; class=&#34;headerlink&#34; title=&#34;友元关系&#34;&gt;&lt;/a&gt;友元关系&lt;/h2&gt;&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;" />
     <meta property="og:url" content="https://1792838722.github.io/2023/04/03/blog004/index.html" />
     <meta property="og:site_name" content="" />
     <meta property="article:author" content="Byte" />
     <meta property="article:publisher" content="" />
-    <meta property="og:description" content="&lt;h2 id=&#34;友元关系&#34;&gt;友元关系&lt;/h2&gt;
-&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;" />
+    <meta property="og:description" content="&lt;h2 id=&#34;友元关系&#34;&gt;&lt;a href=&#34;#友元关系&#34; class=&#34;headerlink&#34; title=&#34;友元关系&#34;&gt;&lt;/a&gt;友元关系&lt;/h2&gt;&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;" />
     <meta name="twitter:title" content="友元关系 | Byte"/>
-    <meta name="twitter:description" content="&lt;h2 id=&#34;友元关系&#34;&gt;友元关系&lt;/h2&gt;
-&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;"/>
+    <meta name="twitter:description" content="&lt;h2 id=&#34;友元关系&#34;&gt;&lt;a href=&#34;#友元关系&#34; class=&#34;headerlink&#34; title=&#34;友元关系&#34;&gt;&lt;/a&gt;友元关系&lt;/h2&gt;&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;"/>
     <script type="application/ld+json">
         {
-            "description": "&lt;h2 id=&#34;友元关系&#34;&gt;友元关系&lt;/h2&gt;
-&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;",
+            "description": "&lt;h2 id=&#34;友元关系&#34;&gt;&lt;a href=&#34;#友元关系&#34; class=&#34;headerlink&#34; title=&#34;友元关系&#34;&gt;&lt;/a&gt;友元关系&lt;/h2&gt;&lt;p&gt;C++友元关系主要分为&lt;strong&gt;三类&lt;/strong&gt;：&lt;/p&gt;",
             "author": { "@type": "Person", "name": "Byte" },
             "@type": "BlogPosting",
             "url": "https://1792838722.github.io/2023/04/03/blog004/index.html",
@@ -188,7 +183,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnlv791w0005qccc4wpja2ne" class="article article-type-post" itemscope
+    <article id="post-clnlvfqzc0003oscc4vi63qe5" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -234,113 +229,106 @@
         </div>
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <h2 id="友元关系">友元关系</h2>
-<p>C++友元关系主要分为<strong>三类</strong>：</p>
+            <h2 id="友元关系"><a href="#友元关系" class="headerlink" title="友元关系"></a>友元关系</h2><p>C++友元关系主要分为<strong>三类</strong>：</p>
 <span id="more"></span>
-<h3 id="全局函数作友元">1.全局函数作友元</h3>
-<p>​ 默认情况下，类的 private 成员只能在类的内部来访问，在类的外部访问
-private 成员是非法的。而如果想在类外部的全局函数里访问 private
-成员的话，就可以定义该函数与类的友元关系来访问类的 private 成员。</p>
-<p>​ 形象来说，类相当于一栋房子。public
-成员储存在客厅，外来的客人可以任意访问；而 private
-成员储存在卧室，外人莫入，只能自己访问。而如果想让某个朋友也能进入卧室访问
-private
-成员的话，那么就可以专门给他开一个小门，允许他进入卧室。这个小门就可以称为友元关系。</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point1<span class="op">&#123;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sitex<span class="op">,</span>sitey<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        Point1<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span><span class="dt">int</span> y<span class="op">)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            sitex <span class="op">=</span> x<span class="op">,</span>sitey <span class="op">=</span> y<span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">friend</span> <span class="dt">void</span> distance<span class="op">(</span><span class="at">const</span> Point1 <span class="op">*,</span><span class="at">const</span> Point1 <span class="op">*);</span><span class="co">//全局函数作友元</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span><span class="co">// 定义 Point 类</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> distance<span class="op">(</span><span class="at">const</span> Point1 <span class="op">*</span>a<span class="op">,</span><span class="at">const</span> Point1 <span class="op">*</span>b<span class="op">)</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> dx <span class="op">=</span> a<span class="op">-&gt;</span>sitex <span class="op">-</span> b<span class="op">-&gt;</span>sitex<span class="op">,</span>dy <span class="op">=</span> a<span class="op">-&gt;</span>sitey<span class="op">;</span> <span class="op">-</span> b<span class="op">-&gt;</span>sitey<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dx <span class="op">&lt;&lt;</span> <span class="st">&quot; &quot;</span> <span class="op">&lt;&lt;</span> dy <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span><span class="co">// 友元关系使得该函数能访问 private 成员 sitex 和 sitey</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;windows.h&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point2<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point1<span class="op">&#123;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> <span class="kw">class</span> Point1Friend<span class="op">;</span><span class="co">//类的友元,使得22行</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sitex<span class="op">,</span>sitey<span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        Point1<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span><span class="dt">int</span> y<span class="op">)</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            sitex <span class="op">=</span> x<span class="op">,</span>sitey <span class="op">=</span> y<span class="op">;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">friend</span> <span class="dt">void</span> distance<span class="op">(</span><span class="at">const</span> Point1 <span class="op">*,</span><span class="at">const</span> Point1 <span class="op">*);</span><span class="co">//全局函数作友元</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">//void distanceNoFriend(const Point1 *,const Point1 *);</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point1Friend<span class="op">&#123;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        Point1Friend<span class="op">(</span>Point1 <span class="op">*</span>a<span class="op">)</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            P1s <span class="op">=</span> a<span class="op">;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="dt">void</span> getPoint1<span class="op">()</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">&quot;contents from Point1Friend: &quot;</span> <span class="op">&lt;&lt;</span> P1s<span class="op">-&gt;</span>sitex <span class="op">&lt;&lt;</span> <span class="ch">&#39; &#39;</span> <span class="op">&lt;&lt;</span> P1s<span class="op">-&gt;</span>sitey <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        Point1 <span class="op">*</span>P1s<span class="op">;</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point2Friend<span class="op">&#123;</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        <span class="dt">void</span> getPoint2<span class="op">(</span><span class="at">const</span> Point2 <span class="op">*);</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Point2<span class="op">&#123;</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">friend</span> <span class="dt">void</span> Point2Friend<span class="op">::</span>getPoint2<span class="op">(</span><span class="at">const</span> Point2 <span class="op">*);</span><span class="co">//友元成员函数,先写friend的类,再写本身，因为关系是Point2Friend-&gt;Point2</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        Point2<span class="op">(</span><span class="dt">int</span> x<span class="op">,</span><span class="dt">int</span> y<span class="op">,</span><span class="dt">int</span> z<span class="op">)</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>            sitex <span class="op">=</span> x<span class="op">,</span>sitey <span class="op">=</span> y<span class="op">,</span>sitez <span class="op">=</span> z<span class="op">;</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        <span class="dt">void</span> get2<span class="op">()</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> sitex <span class="op">&lt;&lt;</span> <span class="st">&quot; &quot;</span> <span class="op">&lt;&lt;</span> sitey <span class="op">&lt;&lt;</span> <span class="ch">&#39; &#39;</span> <span class="op">&lt;&lt;</span> sitez <span class="op">&lt;&lt;</span> <span class="ch">&#39; &#39;</span> <span class="op">&lt;&lt;</span><span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span><span class="op">:</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> sitex<span class="op">,</span>sitey<span class="op">,</span>sitez<span class="op">;</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> distance<span class="op">(</span><span class="at">const</span> Point1 <span class="op">*</span>a<span class="op">,</span><span class="at">const</span> Point1 <span class="op">*</span>b<span class="op">)</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> dx <span class="op">=</span> a<span class="op">-&gt;</span>sitex <span class="op">-</span> b<span class="op">-&gt;</span>sitex<span class="op">,</span>dy <span class="op">=</span> a<span class="op">-&gt;</span>sitey<span class="op">;</span> <span class="op">-</span> b<span class="op">-&gt;</span>sitey<span class="op">;</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> dx <span class="op">&lt;&lt;</span> <span class="st">&quot; &quot;</span> <span class="op">&lt;&lt;</span> dy <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co">//有friend</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co">// void distanceNoFriend(const Point1 *a,const Point1 *b)</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co">// &#123;</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co">//     int dx = a-&gt;sitex - b-&gt;sitex,dy = a-&gt;sitey; - b-&gt;sitey;</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="co">//     std::cout &lt;&lt; dx &lt;&lt; &quot; &quot; &lt;&lt; dy &lt;&lt; std::endl;</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">// &#125;</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="co">//没friend</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Point2Friend<span class="op">::</span>getPoint2<span class="op">(</span><span class="at">const</span> Point2 <span class="op">*</span>a<span class="op">)</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    <span class="bu">std::</span>cout <span class="op">&lt;&lt;</span> <span class="st">&quot;contents from Point2Friend: &quot;</span> <span class="op">&lt;&lt;</span> a<span class="op">-&gt;</span>sitex <span class="op">&lt;&lt;</span> <span class="ch">&#39; &#39;</span> <span class="op">&lt;&lt;</span> a<span class="op">-&gt;</span>sitey <span class="op">&lt;&lt;</span> <span class="ch">&#39; &#39;</span> <span class="op">&lt;&lt;</span> a<span class="op">-&gt;</span>sitez <span class="op">&lt;&lt;</span> <span class="bu">std::</span>endl<span class="op">;</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    Point1 <span class="op">*</span>P1a <span class="op">=</span> <span class="kw">new</span> Point1<span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">);</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    Point1 <span class="op">*</span>P1b <span class="op">=</span> <span class="kw">new</span> Point1<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">);</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    Point2 <span class="op">*</span>P2 <span class="op">=</span> <span class="kw">new</span> Point2<span class="op">(</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">);</span></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    Point1Friend <span class="op">*</span>F1 <span class="op">=</span> <span class="kw">new</span> Point1Friend<span class="op">(</span>P1a<span class="op">);</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    Point2Friend <span class="op">*</span>F2 <span class="op">=</span> <span class="kw">new</span> Point2Friend<span class="op">();</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    F1<span class="op">-&gt;</span>getPoint1<span class="op">();</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    F2<span class="op">-&gt;</span>getPoint2<span class="op">(</span>P2<span class="op">);</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    distance<span class="op">(</span>P1a<span class="op">,</span>P1b<span class="op">);</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>    <span class="kw">delete</span> P1a<span class="op">,</span>P1b<span class="op">,</span>P2<span class="op">,</span>F1<span class="op">,</span>F2<span class="op">;</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    system<span class="op">(</span><span class="st">&quot;pause&quot;</span><span class="op">);</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+
+<h3 id="1-全局函数作友元"><a href="#1-全局函数作友元" class="headerlink" title="1.全局函数作友元"></a>1.全局函数作友元</h3><p>​	默认情况下，类的 private 成员只能在类的内部来访问，在类的外部访问 private 成员是非法的。而如果想在类外部的全局函数里访问 private 成员的话，就可以定义该函数与类的友元关系来访问类的 private 成员。</p>
+<p>​	形象来说，类相当于一栋房子。public 成员储存在客厅，外来的客人可以任意访问；而 private 成员储存在卧室，外人莫入，只能自己访问。而如果想让某个朋友也能进入卧室访问 private 成员的话，那么就可以专门给他开一个小门，允许他进入卧室。这个小门就可以称为友元关系。</p>
+<pre><code class="cpp">class Point1&#123;
+    private:
+        int sitex,sitey;
+    public:
+        Point1(int x,int y)
+        &#123;
+            sitex = x,sitey = y;
+        &#125;
+        friend void distance(const Point1 *,const Point1 *);//全局函数作友元
+&#125;;// 定义 Point 类
+
+void distance(const Point1 *a,const Point1 *b)
+&#123;
+    int dx = a-&gt;sitex - b-&gt;sitex,dy = a-&gt;sitey; - b-&gt;sitey;
+    std::cout &lt;&lt; dx &lt;&lt; &quot; &quot; &lt;&lt; dy &lt;&lt; std::endl;
+&#125;// 友元关系使得该函数能访问 private 成员 sitex 和 sitey
+</code></pre>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;windows.h&gt;
+class Point2;
+class Point1&#123;
+    friend class Point1Friend;//类的友元,使得22行
+    private:
+        int sitex,sitey;
+    public:
+        Point1(int x,int y)
+        &#123;
+            sitex = x,sitey = y;
+        &#125;
+        friend void distance(const Point1 *,const Point1 *);//全局函数作友元
+        //void distanceNoFriend(const Point1 *,const Point1 *);
+&#125;;
+class Point1Friend&#123;
+    public:
+        Point1Friend(Point1 *a)
+        &#123;
+            P1s = a;
+        &#125;
+        void getPoint1()
+        &#123;
+            std::cout &lt;&lt; &quot;contents from Point1Friend: &quot; &lt;&lt; P1s-&gt;sitex &lt;&lt; &#39; &#39; &lt;&lt; P1s-&gt;sitey &lt;&lt; std::endl;
+        &#125;
+    private:
+        Point1 *P1s;
+&#125;;
+class Point2Friend&#123;
+    public:
+        void getPoint2(const Point2 *);
+    private:
+&#125;;
+class Point2&#123;
+    friend void Point2Friend::getPoint2(const Point2 *);//友元成员函数,先写friend的类,再写本身，因为关系是Point2Friend-&gt;Point2
+    public:
+        Point2(int x,int y,int z)
+        &#123;
+            sitex = x,sitey = y,sitez = z;
+        &#125;
+        void get2()
+        &#123;
+            std::cout &lt;&lt; sitex &lt;&lt; &quot; &quot; &lt;&lt; sitey &lt;&lt; &#39; &#39; &lt;&lt; sitez &lt;&lt; &#39; &#39; &lt;&lt;std::endl;
+        &#125;
+    private:
+        int sitex,sitey,sitez;
+&#125;;
+void distance(const Point1 *a,const Point1 *b)
+&#123;
+    int dx = a-&gt;sitex - b-&gt;sitex,dy = a-&gt;sitey; - b-&gt;sitey;
+    std::cout &lt;&lt; dx &lt;&lt; &quot; &quot; &lt;&lt; dy &lt;&lt; std::endl;
+&#125;
+//有friend
+// void distanceNoFriend(const Point1 *a,const Point1 *b)
+// &#123;
+//     int dx = a-&gt;sitex - b-&gt;sitex,dy = a-&gt;sitey; - b-&gt;sitey;
+//     std::cout &lt;&lt; dx &lt;&lt; &quot; &quot; &lt;&lt; dy &lt;&lt; std::endl;
+// &#125;
+//没friend
+void Point2Friend::getPoint2(const Point2 *a)
+&#123;
+    std::cout &lt;&lt; &quot;contents from Point2Friend: &quot; &lt;&lt; a-&gt;sitex &lt;&lt; &#39; &#39; &lt;&lt; a-&gt;sitey &lt;&lt; &#39; &#39; &lt;&lt; a-&gt;sitez &lt;&lt; std::endl;
+&#125;
+int main()
+&#123;
+    Point1 *P1a = new Point1(1,2);
+    Point1 *P1b = new Point1(0,0);
+    Point2 *P2 = new Point2(3,4,5);
+    Point1Friend *F1 = new Point1Friend(P1a);
+    Point2Friend *F2 = new Point2Friend();
+    F1-&gt;getPoint1();
+    F2-&gt;getPoint2(P2);
+    distance(P1a,P1b);
+    delete P1a,P1b,P2,F1,F2;
+    system(&quot;pause&quot;);
+    return 0;
+&#125;
+</code></pre>
 
         </div>
 
@@ -366,7 +354,7 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#c
 <nav class="article-nav">
   
     <a href="/2023/09/26/blog004/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">prossimo</div>
+      <div class="article-nav-caption">下一篇</div>
       <div class="article-nav-title">
         
           栈与队列
@@ -376,7 +364,7 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#c
   
   
     <a href="/2022/12/06/blog003/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">precedente</div>
+      <div class="article-nav-caption">上一篇</div>
       <div class="article-nav-title">链表基础</div>
     </a>
   
@@ -384,7 +372,7 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#c
 
 
     <section class="share">
-        <div class="share-title">share</div>
+        <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=友元关系 - Byte&url=https%3A%2F%2F1792838722.github.io%2F2023%2F04%2F03%2Fblog004%2F">
             <ion-icon name="logo-twitter"></ion-icon>

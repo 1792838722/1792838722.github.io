@@ -183,7 +183,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnlv791x0008qccc6uix1ozf" class="article article-type-post" itemscope
+    <article id="post-clnlvfqzk000iosccatotbhnu" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -231,179 +231,181 @@
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <p>模板留作参考</p>
 <span id="more"></span>
+
 <p>C++:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> node<span class="op">&#123;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> data<span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//数据域</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> node <span class="op">*</span>nxt<span class="op">;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">//指针域</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> n<span class="op">,</span>x<span class="op">,</span>need_del<span class="op">;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> node <span class="op">*</span>head<span class="op">=</span>NULL<span class="op">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> add_list_tail<span class="op">(</span><span class="kw">struct</span> node <span class="op">**</span>head<span class="op">,</span><span class="kw">struct</span> node <span class="op">*</span>new_one<span class="op">)</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    new_one<span class="op">-&gt;</span>data<span class="op">=</span>x<span class="op">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    new_one<span class="op">-&gt;</span>nxt<span class="op">=*</span>head<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>head<span class="op">=</span>new_one<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span><span class="co">//在 list 尾部插入</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> add_list_head<span class="op">(</span><span class="kw">struct</span> node <span class="op">**</span>head<span class="op">,</span><span class="kw">struct</span> node <span class="op">*</span>new_one<span class="op">)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> node <span class="op">*</span>real_head<span class="op">=*</span>head<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    new_one<span class="op">-&gt;</span>data<span class="op">=</span>x<span class="op">;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>real_head<span class="op">)</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#123;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span><span class="op">(</span>real_head<span class="op">-&gt;</span>nxt<span class="op">)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            real_head<span class="op">=</span>real_head<span class="op">-&gt;</span>nxt<span class="op">;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        real_head<span class="op">-&gt;</span>nxt<span class="op">=</span>new_one<span class="op">;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="op">*</span>head<span class="op">=</span>new_one<span class="op">;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    new_one<span class="op">-&gt;</span>nxt<span class="op">=</span>NULL<span class="op">;</span><span class="co">//记得 if 里面也要将 nxt 标记为 NULL</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span><span class="co">//在 list 头部插入</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> traversal<span class="op">()</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="kw">struct</span> node <span class="op">*</span>p<span class="op">=</span>head<span class="op">;</span>p<span class="op">;</span>p<span class="op">=</span>p<span class="op">-&gt;</span>nxt<span class="op">)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d\n</span><span class="st">&quot;</span><span class="op">,</span>p<span class="op">-&gt;</span>data<span class="op">);</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span><span class="co">//从尾部遍历 list</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> del<span class="op">(</span><span class="dt">int</span> x<span class="op">)</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> node <span class="op">*</span>cur<span class="op">,*</span>pre<span class="op">;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span>cur<span class="op">=</span>head<span class="op">,</span>pre<span class="op">=</span>head<span class="op">;</span>cur<span class="op">&amp;&amp;</span>cur<span class="op">-&gt;</span>data<span class="op">!=</span>x<span class="op">;</span>cur<span class="op">=</span>cur<span class="op">-&gt;</span>nxt<span class="op">)</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        pre<span class="op">=</span>cur<span class="op">;</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(!</span>cur<span class="op">)</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span><span class="co">//-1 代表没找到</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>pre<span class="op">==</span>cur<span class="op">)</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        head<span class="op">=</span>cur<span class="op">-&gt;</span>nxt<span class="op">;</span><span class="co">// 防止删除尾部节点后 traversal 时因 head 未更改导致 RE</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    pre<span class="op">-&gt;</span>nxt<span class="op">=</span>cur<span class="op">-&gt;</span>nxt<span class="op">;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>cur<span class="op">);</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span><span class="co">//0 代表成功删除了节点并正常退出</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,&amp;</span>n<span class="op">);</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">1</span><span class="op">;</span>i<span class="op">&lt;=</span>n<span class="op">;</span>i<span class="op">++)</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#123;</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>        <span class="kw">struct</span> node <span class="op">*</span>new_one<span class="op">=(</span><span class="kw">struct</span> node<span class="op">*)</span>malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span><span class="kw">struct</span> node<span class="op">));</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>        scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,&amp;</span>x<span class="op">);</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>        <span class="co">//add_list_head(&amp;head,new_one);</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        add_list_tail<span class="op">(&amp;</span>head<span class="op">,</span>new_one<span class="op">);</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>        <span class="co">//list 以第一个 nxt 指向空指针的结构体节点为头部</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>    scanf<span class="op">(</span><span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span><span class="op">,&amp;</span>need_del<span class="op">);</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    del<span class="op">(</span>need_del<span class="op">);</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    traversal<span class="op">();</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<pre><code class="c">#include &lt;stdio.h&gt;
+struct node&#123;
+    int data;
+    //数据域
+    struct node *nxt;
+    //指针域
+&#125;;
+int n,x,need_del;
+struct node *head=NULL;
+void add_list_tail(struct node **head,struct node *new_one)
+&#123;
+    new_one-&gt;data=x;
+    new_one-&gt;nxt=*head;
+    *head=new_one;
+    return;
+&#125;//在 list 尾部插入
+void add_list_head(struct node **head,struct node *new_one)
+&#123;
+    struct node *real_head=*head;
+    new_one-&gt;data=x;
+    if(real_head)
+    &#123;
+        while(real_head-&gt;nxt)
+            real_head=real_head-&gt;nxt;
+        real_head-&gt;nxt=new_one;
+    &#125;
+    else
+        *head=new_one;
+    new_one-&gt;nxt=NULL;//记得 if 里面也要将 nxt 标记为 NULL
+    return;
+&#125;//在 list 头部插入
+void traversal()
+&#123;
+    for(struct node *p=head;p;p=p-&gt;nxt)
+        printf(&quot;%d\n&quot;,p-&gt;data);
+    return;
+&#125;//从尾部遍历 list
+int del(int x)
+&#123;
+    struct node *cur,*pre;
+    for(cur=head,pre=head;cur&amp;&amp;cur-&gt;data!=x;cur=cur-&gt;nxt)
+        pre=cur;
+    if(!cur)
+        return -1;//-1 代表没找到
+    if(pre==cur)
+        head=cur-&gt;nxt;// 防止删除尾部节点后 traversal 时因 head 未更改导致 RE
+    pre-&gt;nxt=cur-&gt;nxt;
+    free(cur);
+    return 0;//0 代表成功删除了节点并正常退出
+&#125;
+int main()
+&#123;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+    &#123;
+        struct node *new_one=(struct node*)malloc(sizeof(struct node));
+        scanf(&quot;%d&quot;,&amp;x);
+        //add_list_head(&amp;head,new_one);
+        add_list_tail(&amp;head,new_one);
+        //list 以第一个 nxt 指向空指针的结构体节点为头部
+    &#125;
+    scanf(&quot;%d&quot;,&amp;need_del);
+    del(need_del);
+    traversal();
+    return 0;
+&#125;
+</code></pre>
 <p>Java:</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> <span class="bu">LinkedList</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> <span class="op">&#123;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> head<span class="op">;</span> <span class="co">// 头结点</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">LinkedList</span><span class="op">()</span> <span class="op">&#123;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        head <span class="op">=</span> <span class="kw">new</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;();</span> <span class="co">// 头结点不存储数据</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">int</span> <span class="fu">length</span><span class="op">()</span> <span class="op">&#123;</span> <span class="co">// 返回链表长度</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> p <span class="op">=</span> head<span class="op">.</span><span class="fu">nxt</span><span class="op">;</span> p <span class="op">!=</span> <span class="kw">null</span><span class="op">;</span> p <span class="op">=</span> p<span class="op">.</span><span class="fu">nxt</span><span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            count <span class="op">++;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> count<span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">empty</span><span class="op">()</span> <span class="op">&#123;</span> <span class="co">// 判断链表是否为空</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> head<span class="op">.</span><span class="fu">nxt</span> <span class="op">==</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">clear</span><span class="op">()</span> <span class="op">&#123;</span> <span class="co">// 清空链表</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(!</span><span class="fu">empty</span><span class="op">())</span> <span class="op">&#123;</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">delete</span><span class="op">(</span><span class="dv">1</span><span class="op">);</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">traverse</span><span class="op">()</span> <span class="op">&#123;</span> <span class="co">// 遍历链表</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> p <span class="op">=</span> head<span class="op">.</span><span class="fu">nxt</span><span class="op">;</span> p <span class="op">!=</span> <span class="kw">null</span><span class="op">;</span> p <span class="op">=</span> p<span class="op">.</span><span class="fu">nxt</span><span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            <span class="bu">System</span><span class="op">.</span><span class="fu">out</span><span class="op">.</span><span class="fu">println</span><span class="op">(</span>p<span class="op">.</span><span class="fu">data</span><span class="op">);</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> <span class="fu">getElemPtr</span> <span class="op">(</span><span class="dt">int</span> pos<span class="op">,</span> <span class="dt">int</span> limLeft<span class="op">,</span> <span class="dt">int</span> limRight<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 获取指定位置的结点指针</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>pos <span class="op">&lt;</span> limLeft <span class="op">||</span> pos <span class="op">&gt;</span> limRight<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">throw</span> <span class="kw">new</span> <span class="bu">IllegalArgumentException</span><span class="op">(</span><span class="st">&quot;Position is out of range!&quot;</span><span class="op">);</span> <span class="co">// 抛出异常</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="dt">int</span> count <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> p <span class="op">=</span> head<span class="op">;</span> p <span class="op">!=</span> <span class="kw">null</span><span class="op">;</span> p <span class="op">=</span> p<span class="op">.</span><span class="fu">nxt</span><span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>count <span class="op">==</span> pos<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">return</span> p<span class="op">;</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                <span class="op">&#125;</span> <span class="cf">else</span> <span class="op">&#123;</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                    count <span class="op">++;</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                <span class="op">&#125;</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> ElemType <span class="fu">getElem</span><span class="op">(</span><span class="dt">int</span> pos<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 获取指定位置的元素</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">&#123;</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> p <span class="op">=</span> <span class="fu">getElemPtr</span><span class="op">(</span>pos<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="fu">length</span><span class="op">());</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> p<span class="op">.</span><span class="fu">data</span><span class="op">;</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 捕获异常</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>            e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">setElem</span><span class="op">(</span><span class="dt">int</span> pos<span class="op">,</span> ElemType val<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 设置指定位置的元素</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">&#123;</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> p <span class="op">=</span> <span class="fu">getElemPtr</span><span class="op">(</span>pos<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="fu">length</span><span class="op">());</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>            p<span class="op">.</span><span class="fu">data</span> <span class="op">=</span> val<span class="op">;</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 捕获异常 </span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>            e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">delete</span><span class="op">(</span><span class="dt">int</span> pos<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 删除指定位置的元素</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">&#123;</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> back <span class="op">=</span> <span class="fu">getElemPtr</span><span class="op">(</span>pos <span class="op">-</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="fu">length</span><span class="op">());</span> <span class="co">// 被删除结点的前驱结点</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> pst <span class="op">=</span> back<span class="op">.</span><span class="fu">nxt</span><span class="op">;</span>  <span class="co">// 被删除结点</span></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>            back<span class="op">.</span><span class="fu">nxt</span> <span class="op">=</span> back<span class="op">.</span><span class="fu">nxt</span><span class="op">.</span><span class="fu">nxt</span><span class="op">;</span> <span class="co">// 删除结点</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>            pst <span class="op">=</span> <span class="kw">null</span><span class="op">;</span> <span class="co">// 释放内存</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 捕获异常</span></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>            e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">insert</span><span class="op">(</span><span class="dt">int</span> pos<span class="op">,</span> ElemType val<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 在指定位置插入元素</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span> <span class="op">&#123;</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>            <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> back <span class="op">=</span> <span class="fu">getElemPtr</span><span class="op">(</span>pos<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="fu">length</span><span class="op">());</span> <span class="co">// 被插入结点的前驱结点</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>            back<span class="op">.</span><span class="fu">nxt</span> <span class="op">=</span> <span class="kw">new</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;(</span>back<span class="op">.</span><span class="fu">nxt</span><span class="op">,</span> val<span class="op">);</span> <span class="co">// 插入结点</span></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span> </span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span> <span class="cf">catch</span> <span class="op">(</span><span class="bu">IllegalArgumentException</span> e<span class="op">)</span> <span class="op">&#123;</span>  <span class="co">// 捕获异常</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>            e<span class="op">.</span><span class="fu">printStackTrace</span><span class="op">();</span> </span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> <span class="op">&#123;</span> <span class="co">// 链表结点类</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> nxt <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> ElemType data<span class="op">;</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Node</span><span class="op">()</span> <span class="op">&#123;&#125;</span></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="bu">Node</span><span class="op">(</span><span class="bu">Node</span><span class="op">&lt;</span>ElemType<span class="op">&gt;</span> next<span class="op">,</span> ElemType data<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">nxt</span> <span class="op">=</span> next<span class="op">;</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="fu">data</span> <span class="op">=</span> data<span class="op">;</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<pre><code class="java">public class LinkedList&lt;ElemType&gt; &#123;
+    private Node&lt;ElemType&gt; head; // 头结点
+
+    public LinkedList() &#123;
+        head = new Node&lt;ElemType&gt;(); // 头结点不存储数据
+    &#125;
+
+    public int length() &#123; // 返回链表长度
+        int count = 0;
+        for (Node&lt;ElemType&gt; p = head.nxt; p != null; p = p.nxt) &#123;
+            count ++;
+        &#125;
+        return count;
+    &#125;
+
+    public boolean empty() &#123; // 判断链表是否为空
+        return head.nxt == null;
+    &#125;
+
+    public void clear() &#123; // 清空链表
+        while (!empty()) &#123;
+            delete(1);
+        &#125;
+    &#125;
+
+    public void traverse() &#123; // 遍历链表
+        for (Node&lt;ElemType&gt; p = head.nxt; p != null; p = p.nxt) &#123;
+            System.out.println(p.data);
+        &#125;
+    &#125;
+
+    private Node&lt;ElemType&gt; getElemPtr (int pos, int limLeft, int limRight) &#123; // 获取指定位置的结点指针
+        if (pos &lt; limLeft || pos &gt; limRight) &#123;
+            throw new IllegalArgumentException(&quot;Position is out of range!&quot;); // 抛出异常
+        &#125; else &#123;
+            int count = 0;
+            for (Node&lt;ElemType&gt; p = head; p != null; p = p.nxt) &#123;
+                if (count == pos) &#123;
+                    return p;
+                &#125; else &#123;
+                    count ++;
+                &#125;
+            &#125;
+        &#125;
+        return null;
+    &#125;
+    
+    public ElemType getElem(int pos) &#123; // 获取指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; p = getElemPtr(pos, 1, length());
+            return p.data;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常
+            e.printStackTrace();
+        &#125;
+        return null;
+    &#125;
+
+    public boolean setElem(int pos, ElemType val) &#123; // 设置指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; p = getElemPtr(pos, 1, length());
+            p.data = val;
+            return true;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常 
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    public boolean delete(int pos) &#123; // 删除指定位置的元素
+        try &#123;
+            Node&lt;ElemType&gt; back = getElemPtr(pos - 1, 1, length()); // 被删除结点的前驱结点
+            Node&lt;ElemType&gt; pst = back.nxt;  // 被删除结点
+            back.nxt = back.nxt.nxt; // 删除结点
+            pst = null; // 释放内存
+            return true;
+        &#125; catch (IllegalArgumentException e) &#123; // 捕获异常
+            e.printStackTrace();
+        &#125;
+        return false;
+    &#125;
+
+    public boolean insert(int pos, ElemType val) &#123; // 在指定位置插入元素
+        try &#123;
+            Node&lt;ElemType&gt; back = getElemPtr(pos, 0, length()); // 被插入结点的前驱结点
+            back.nxt = new Node&lt;ElemType&gt;(back.nxt, val); // 插入结点
+            return true; 
+        &#125; catch (IllegalArgumentException e) &#123;  // 捕获异常
+            e.printStackTrace(); 
+            return false;
+        &#125;
+    &#125;
+&#125;
+
+class Node&lt;ElemType&gt; &#123; // 链表结点类
+    public Node&lt;ElemType&gt; nxt = null;
+    public ElemType data;
+
+    public Node() &#123;&#125;
+
+    public Node(Node&lt;ElemType&gt; next, ElemType data) &#123;
+        this.nxt = next;
+        this.data = data;
+    &#125;
+&#125;
+</code></pre>
 
         </div>
 
@@ -429,7 +431,7 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="
 <nav class="article-nav">
   
     <a href="/2023/04/03/blog004/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">prossimo</div>
+      <div class="article-nav-caption">下一篇</div>
       <div class="article-nav-title">
         
           友元关系
@@ -439,7 +441,7 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="
   
   
     <a href="/2022/10/31/blog000/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">precedente</div>
+      <div class="article-nav-caption">上一篇</div>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -447,7 +449,7 @@ class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="
 
 
     <section class="share">
-        <div class="share-title">share</div>
+        <div class="share-title">分享</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=链表基础 - Byte&url=https%3A%2F%2F1792838722.github.io%2F2022%2F12%2F06%2Fblog003%2F">
             <ion-icon name="logo-twitter"></ion-icon>
