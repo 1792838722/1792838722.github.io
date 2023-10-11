@@ -103,11 +103,119 @@
 
     </script>
 
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <body>
 
@@ -187,7 +295,7 @@
             <section class="inner">
                 <section class="inner-main">
                     <div class="post">
-    <article id="post-clnlvt77c000114ccc7w31bsr" class="article article-type-post" itemscope
+    <article id="post-clnlw5tue0001pscc08ha34je" class="article article-type-post" itemscope
     itemprop="blogPost">
 
     <div class="article-inner">
@@ -226,7 +334,7 @@
 
             
             <div class="article-busuanzi">
-                <span id="busuanzi_value_page_pv">N</span> 人看过
+                <span id="busuanzi_value_page_pv">N</span> views
             </div>
             
 
@@ -234,7 +342,7 @@
 
         <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h2 id="KMP-算法解析"><a href="#KMP-算法解析" class="headerlink" title="KMP 算法解析"></a>KMP 算法解析</h2><span id="more"></span>
-<h3 id="一-引入"><a href="#一-引入" class="headerlink" title="一. 引入"></a>一. 引入</h3><p>​    现在把需要相互比较的字符串分为<strong>文本串</strong>（被比较的字符串，通常较长）和<strong>模式串</strong>（需要比较的字符串，通常较短）。比较简单的算法实现就是通过暴力匹配，来一位一位的进行比较。当文本串中的某一位失配时，即将文本串回溯从头开始比较。最坏情况下，时间复杂度能达到 $\Theta（nm）$. KMP 算法则通过构造<strong>失配跳转数组</strong> next[]，实现模式串失配后跳转其匹配的<strong>唯一</strong>位置，来避免文本串的回溯，从而降低时间复杂度。</p>
+<h3 id="一-引入"><a href="#一-引入" class="headerlink" title="一. 引入"></a>一. 引入</h3><p>​    现在把需要相互比较的字符串分为<strong>文本串</strong>（被比较的字符串，通常较长）和<strong>模式串</strong>（需要比较的字符串，通常较短）。比较简单的算法实现就是通过暴力匹配，来一位一位的进行比较。当文本串中的某一位失配时，即将文本串回溯从头开始比较。最坏情况下，时间复杂度能达到 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="9.629ex" height="2.149ex" role="img" focusable="false" viewBox="0 -750 4256 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="398" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM610 339Q610 428 590 495T535 598T463 651T384 668Q332 668 289 638T221 566Q168 485 168 339Q168 274 176 235Q189 158 228 105T324 28Q356 16 388 16Q415 16 442 24T501 54T555 111T594 205T610 339ZM223 263V422H263V388H514V422H554V263H514V297H263V263H223Z"></path></g><g data-mml-node="mi" transform="translate(778,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">（</text></g><g data-mml-node="mi" transform="translate(1778,0)"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(2378,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g><g data-mml-node="mi" transform="translate(3256,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">）</text></g></g></g></svg></mjx-container>. KMP 算法则通过构造<strong>失配跳转数组</strong> next[]，实现模式串失配后跳转其匹配的<strong>唯一</strong>位置，来避免文本串的回溯，从而降低时间复杂度。</p>
 <h3 id="二-解析"><a href="#二-解析" class="headerlink" title="二.解析"></a>二.解析</h3><p>​    KMP 算法相较于暴力匹配算法，其中最大的优化在于构造了失配跳转数组 next[]. 这里定义一下失配跳转数组 next[] 的含义：<strong>next[i] = j</strong> 相当于在 <strong>i 位置之后</strong>失配时跳转到 <strong>j 位置</strong>。而现在就是要知道怎么得到 next[]. 现有一示例:</p>
 <pre><code>文本串：ABABABC
 模式串：ABABC
@@ -309,21 +417,21 @@
 <h3 id="四-实现"><a href="#四-实现" class="headerlink" title="四.实现"></a>四.实现</h3><p>​    证明到上述计算 next[] 的方法合理后，当我们得到 next[] 之后，计算两串匹配就很简单。当出现不匹配的情况时，只需跳转当前位置的 next[] 中的值即可，直到匹配为止。若匹配则两串指针均自增。当然，如果 pat 的指针通过跳转 next[] 的值都到 -1 了，依旧没有匹配，说明前面已经匹配的文本串根本就没有利用价值，无法利用真前后缀相等来找捷径，应该把文本串指针自增一下重新匹配。</p>
 <p>​    那么字符串匹配的算法就很好写了：</p>
 <pre><code class="lang-java">// next[] 已求出
-private static int KMP() &#123;
+private static int KMP() {
        int patPtr = -1; // 开始匹配时，模式串指针为 -1，因为我们是匹配 pat[patPtr + 1] 与 txt[i]
-       for (int i = 0; i &lt; txtLen; i++) &#123; // 限制一下范围
-        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) &#123; 
+       for (int i = 0; i &lt; txtLen; i++) { // 限制一下范围
+        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) { 
             patPtr = next[patPtr]; // 失配跳转
-        &#125;
-        if (pat.charAt(patPtr + 1) == txt.charAt(i)) &#123; // 匹配对了
+        }
+        if (pat.charAt(patPtr + 1) == txt.charAt(i)) { // 匹配对了
             patPtr++;
-        &#125;
-        if (patPtr == patLen - 1) &#123; // 所有的都匹配完了
+        }
+        if (patPtr == patLen - 1) { // 所有的都匹配完了
             return i - patLen + 1; // 返回第一次匹配的文本串首下标
-        &#125;
-     &#125;
+        }
+     }
     return -1; // 根本没匹配到
-&#125;
+}
 </code></pre>
 <p>​    而 next[] 的获取则可以通过前面的值推理。首先 next[0] = -1 是显然的。步骤如下：</p>
 <p>​    1.查看第 next[i - 1]，设为 patPtr.</p>
@@ -332,25 +440,25 @@ private static int KMP() &#123;
 <p>​    4.如果相同，next[i] = patPtr + 1.</p>
 <p>​    5.如果不同，patPtr = next[patPtr]，执行第 2 步。</p>
 <p>​    因此，代码如下：</p>
-<pre><code class="lang-java">private static void getNext() &#123;
+<pre><code class="lang-java">private static void getNext() {
        next[0] = -1; // 就 1 个字符，也找不到真前缀
      int patPtr = -1;
-     for (int i = 1; i &lt; patLen; i++) &#123;
-        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) &#123;
+     for (int i = 1; i &lt; patLen; i++) {
+        while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) {
           patPtr = next[patPtr]; // 失配跳转
-        &#125;
-        if (pat.charAt(patPtr + 1) == pat.charAt(i)) &#123; // 匹配成功
+        }
+        if (pat.charAt(patPtr + 1) == pat.charAt(i)) { // 匹配成功
             patPtr++;
-        &#125;
+        }
         next[i] = patPtr; // 判断情况完成，赋值
-      &#125;
-&#125;
+      }
+}
 </code></pre>
 <p>​    上面就是 KMP 算法的核心代码了。下面给出完整代码。</p>
 <pre><code class="lang-java">import java.util.Scanner;
 
-public class KMP &#123;
-    public static void main(String[] args) &#123;
+public class KMP {
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         txt = in.next(); // 文本串
         pat = in.next(); // 模式串
@@ -360,45 +468,45 @@ public class KMP &#123;
         getNext();
         System.out.println(KMP());
         in.close();
-    &#125;
+    }
 
-    private static void getNext() &#123;
+    private static void getNext() {
         next[0] = -1; // 就 1 个字符，也找不到真前缀
         int patPtr = -1;
-        for (int i = 1; i &lt; patLen; i++) &#123;
-            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) &#123;
+        for (int i = 1; i &lt; patLen; i++) {
+            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != pat.charAt(i)) {
                 patPtr = next[patPtr]; // 失配跳转
-            &#125;
-            if (pat.charAt(patPtr + 1) == pat.charAt(i)) &#123; // 匹配成功
+            }
+            if (pat.charAt(patPtr + 1) == pat.charAt(i)) { // 匹配成功
                 patPtr++;
-            &#125;
+            }
             next[i] = patPtr; // 判断情况完成，赋值
-        &#125;
-    &#125;
+        }
+    }
 
     // next[] 已求出
-    private static int KMP() &#123;
+    private static int KMP() {
         int patPtr = -1; // 开始匹配时，模式串指针为 -1,因为我们是匹配 pat[patPtr + 1] 与 txt[i]
-        for (int i = 0; i &lt; txtLen; i++) &#123; // 限制一下范围
-            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) &#123; 
+        for (int i = 0; i &lt; txtLen; i++) { // 限制一下范围
+            while (patPtr != -1 &amp;&amp; pat.charAt(patPtr + 1) != txt.charAt(i)) { 
                 patPtr = next[patPtr]; // 失配跳转
-            &#125;
-            if (pat.charAt(patPtr + 1) == txt.charAt(i)) &#123; // 匹配对了
+            }
+            if (pat.charAt(patPtr + 1) == txt.charAt(i)) { // 匹配对了
                 patPtr++;
-            &#125;
-            if (patPtr == patLen - 1) &#123; // 所有的都匹配完了
+            }
+            if (patPtr == patLen - 1) { // 所有的都匹配完了
                 return i - patLen + 1; // 返回第一次匹配的文本串首下标
-            &#125;
-        &#125;
+            }
+        }
         return -1; // 根本没匹配到
-    &#125;
+    }
 
     private static int[] next;
     private static int patLen;
     private static int txtLen;
     private static String pat;
     private static String txt;
-&#125;
+}
 </code></pre>
 
         </div>
@@ -414,7 +522,7 @@ public class KMP &#123;
     
   <div class="article-copyright hairline">
     <p>
-      本作品采用  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议 (CC BY-NC-ND 4.0)</a> 进行许可。
+      本記事は  <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">「表示 - 非営利 - 改変禁止 4.0 国際 (CC BY-NC-ND 4.0)」</a> を採用。
     </p>
   </div>
   
@@ -426,7 +534,7 @@ public class KMP &#123;
   
   
     <a href="/2023/09/26/blog004/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-caption">前の記事</div>
       <div class="article-nav-title">栈与队列</div>
     </a>
   
@@ -434,7 +542,7 @@ public class KMP &#123;
 
 
     <section class="share">
-        <div class="share-title">分享</div>
+        <div class="share-title">シェア</div>
         <a class="share-item" target="_blank"
             href="https://twitter.com/share?text=KMP算法 - Byte&url=https%3A%2F%2F1792838722.github.io%2F2023%2F10%2F10%2Fblog004%2F">
             <ion-icon name="logo-twitter"></ion-icon>
@@ -620,6 +728,21 @@ public class KMP &#123;
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
